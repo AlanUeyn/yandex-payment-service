@@ -1,6 +1,7 @@
 package io.tsyrikov.paymentservice.model.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.io.Serializable;
 
 @Entity
@@ -11,18 +12,22 @@ public class Payment implements Serializable {
 
     @Id
     @Column(name = "id")
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.TABLE)
+    private Long id;
 
+    @Min(1)
     @Column(name = "sender_id")
     private Integer senderId;
 
+    @Min(1)
     @Column(name = "receiver_id")
     private Integer receiverId;
 
+    @Min(0)
     @Column(name = "amount")
-    private Integer amount;
+    private Double amount;
 
-    public Payment(Integer senderId, Integer receiverId, Integer amount) {
+    public Payment(Integer senderId, Integer receiverId, Double amount) {
         this.senderId = senderId;
         this.receiverId = receiverId;
         this.amount = amount;
@@ -32,11 +37,11 @@ public class Payment implements Serializable {
 
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -56,11 +61,11 @@ public class Payment implements Serializable {
         this.receiverId = receiverId;
     }
 
-    public Integer getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(Integer amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 }

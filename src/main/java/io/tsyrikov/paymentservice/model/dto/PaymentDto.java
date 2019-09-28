@@ -1,26 +1,22 @@
 package io.tsyrikov.paymentservice.model.dto;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 
-@JsonDeserialize
 public class PaymentDto {
 
-    @JsonCreator
     public PaymentDto() {}
 
     @JsonIgnore
-    public PaymentDto(Integer amount, Integer senderId, Integer receiverId) {
+    public PaymentDto(Double amount, Integer senderId, Integer receiverId) {
         this.amount = amount;
         this.senderId = senderId;
         this.receiverId = receiverId;
     }
 
     @JsonProperty(required = true)
-    private Integer amount;
+    private Double amount;
 
     @JsonProperty(required = true)
     private Integer senderId;
@@ -28,11 +24,11 @@ public class PaymentDto {
     @JsonProperty(required = true)
     private Integer receiverId;
 
-    public Integer getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(Integer amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 

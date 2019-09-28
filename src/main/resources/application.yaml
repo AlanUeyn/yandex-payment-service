@@ -1,22 +1,9 @@
 server:
   port: 8080
-management:
-  endpoints:
-    enabled-by-default: true
-    web:
-      exposure:
-        include: "*"
-    jmx:
-      exposure:
-        include: "*"
-  endpoint:
-    health:
-      show-details: always
 spring:
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: none
+  output:
+    ansi:
+      enabled: ALWAYS
   shardingsphere:
     datasource:
       names: ds0,ds1,ds2
@@ -48,13 +35,6 @@ spring:
       tables:
         t_payment:
           actual-data-nodes: ds$->{0..2}.t_payment
-          key-generator:
-            column: id
-            type: SNOWFLAKE
-            props:
-              worker:
-                id: 123
-
 
   h2:
     console:
