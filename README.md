@@ -10,8 +10,7 @@ payment info between three databases.
 Used:
 
 * Apache ShardingSphere
-* H2 in-memory database
-
+* H2 in-memory database for demonstration purpose
 
 
 ## Quick start
@@ -31,3 +30,14 @@ For Linux:
 ```
 
 API info: http://localhost:8080/swagger-ui.html
+
+H2 database console: http://localhost:8080/h2_console
+
+Instances:
+
+1. jdbc:h2:mem:test
+2. jdbc:h2:mem:test1
+3. jdbc:h2:mem:test2
+
+Username: sa
+Password: password
