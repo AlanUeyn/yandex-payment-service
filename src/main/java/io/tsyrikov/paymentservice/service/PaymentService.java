@@ -8,6 +8,6 @@ public interface PaymentService {
 
     void sendPayments(List<PaymentDto> payments);
 
-    List<PaymentDto> getClientPayments(Integer senderId);
+    Double getClientPayments(Integer senderId);
 
 }

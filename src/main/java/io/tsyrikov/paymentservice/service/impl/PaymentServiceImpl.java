@@ -26,16 +26,14 @@ public class PaymentServiceImpl implements PaymentService {
         List<Payment> entities = payments.stream()
                 .map(PaymentConverter::fromDto)
                 .collect(Collectors.toList());
-        for (Payment payment: entities) {
-            repository.save(payment);
-        }
+        repository.saveAll(entities);
     }
 
     @Override
-    public List<PaymentDto> getClientPayments(Integer senderId) {
+    public Double getClientPayments(Integer senderId) {
         List<Payment> entities = repository.findAllBySenderId(senderId);
         return entities.stream()
-                .map(PaymentConverter::toDto)
-                .collect(Collectors.toList());
+                .map(Payment::getAmount)
+                .reduce(0.0, Double::sum);
     }
 }
