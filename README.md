@@ -12,6 +12,7 @@ Used:
 * Apache ShardingSphere
 * H2 in-memory database for demonstration purpose
 
+All sharding settings (database instances, sharding rules) are set up by Spring Boot Autoconfiguration in application.yaml
 
 ## Quick start
 
